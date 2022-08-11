@@ -1,14 +1,9 @@
+import wallet from "./wallet.png";
 
-import wallet from './wallet.png'
-
-
-const bgs = {
-
-}
+const bgs = {};
 const IMAGES = {
   ...bgs,
-  wallet
+  wallet,
+};
 
-}
-
-export default IMAGES
+export default IMAGES;
