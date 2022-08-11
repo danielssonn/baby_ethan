@@ -37,16 +37,16 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy
-        if: contains(github.ref, 'main')
-        uses: reggionick/s3-deploy@v3
-        with:
-          folder: ./client/dist
-          bucket: ${{ secrets.S3_BUCKET }}
-          bucket-region: ${{ secrets.S3_BUCKET_REGION }}
-          dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
-          invalidation: /
-          delete-removed: true
-          no-cache: true
-          private: false
-          filesToInclude: ".*/*,*/*,**"
+      # - name: Deploy
+      #   if: contains(github.ref, 'main')
+      #   uses: reggionick/s3-deploy@v3
+      #   with:
+      #     folder: ./client/dist
+      #     bucket: ${{ secrets.S3_BUCKET }}
+      #     bucket-region: ${{ secrets.S3_BUCKET_REGION }}
+      #     dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+      #     invalidation: /
+      #     delete-removed: true
+      #     no-cache: true
+      #     private: false
+      #     filesToInclude: ".*/*,*/*,**"
