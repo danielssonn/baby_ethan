@@ -2,3 +2,4 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { BabyAccount } from "./BabyAccount";
+export type { BabyNFT } from "./BabyNFT";

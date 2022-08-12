@@ -2,3 +2,4 @@
 /* tslint:disable */
 /* eslint-disable */
 export { BabyAccount__factory } from "./BabyAccount__factory";
+export { BabyNFT__factory } from "./BabyNFT__factory";

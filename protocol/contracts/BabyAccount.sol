@@ -10,6 +10,8 @@ contract BabyAccount is Ownable, ReentrancyGuard {
 
     // some mapping to manage who sent us monies ....
 
+    mapping (address =>  uint256) babyFriends;
+
     /**
     * Current custodian can withdraw the funds
      */
@@ -21,7 +23,7 @@ contract BabyAccount is Ownable, ReentrancyGuard {
     * Anyone can deposit funds
     */
     function deposit() public payable {
-
+        babyFriends[msg.sender] =   babyFriends[msg.sender] + msg.value;
     }
 
     /**
@@ -29,6 +31,14 @@ contract BabyAccount is Ownable, ReentrancyGuard {
     */
     function getBalance() public view onlyOwner returns (uint256) {
         return address(this).balance;
+    }
+
+    /**
+    * Anyone can check their contribution
+    */
+    function getMyContribution() public view returns (uint256) {
+
+        return babyFriends[msg.sender];
     }
 
 

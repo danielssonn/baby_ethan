@@ -32,6 +32,7 @@ export interface BabyAccountInterface extends utils.Interface {
   functions: {
     "deposit()": FunctionFragment;
     "getBalance()": FunctionFragment;
+    "getMyContribution()": FunctionFragment;
     "owner()": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
@@ -42,6 +43,7 @@ export interface BabyAccountInterface extends utils.Interface {
     nameOrSignatureOrTopic:
       | "deposit"
       | "getBalance"
+      | "getMyContribution"
       | "owner"
       | "renounceOwnership"
       | "transferOwnership"
@@ -51,6 +53,10 @@ export interface BabyAccountInterface extends utils.Interface {
   encodeFunctionData(functionFragment: "deposit", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "getBalance",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getMyContribution",
     values?: undefined
   ): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
@@ -69,6 +75,10 @@ export interface BabyAccountInterface extends utils.Interface {
 
   decodeFunctionResult(functionFragment: "deposit", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "getBalance", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "getMyContribution",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "renounceOwnership",
@@ -132,6 +142,8 @@ export interface BabyAccount extends BaseContract {
 
     getBalance(overrides?: CallOverrides): Promise<[BigNumber]>;
 
+    getMyContribution(overrides?: CallOverrides): Promise<[BigNumber]>;
+
     owner(overrides?: CallOverrides): Promise<[string]>;
 
     renounceOwnership(
@@ -155,6 +167,8 @@ export interface BabyAccount extends BaseContract {
 
   getBalance(overrides?: CallOverrides): Promise<BigNumber>;
 
+  getMyContribution(overrides?: CallOverrides): Promise<BigNumber>;
+
   owner(overrides?: CallOverrides): Promise<string>;
 
   renounceOwnership(
@@ -175,6 +189,8 @@ export interface BabyAccount extends BaseContract {
     deposit(overrides?: CallOverrides): Promise<void>;
 
     getBalance(overrides?: CallOverrides): Promise<BigNumber>;
+
+    getMyContribution(overrides?: CallOverrides): Promise<BigNumber>;
 
     owner(overrides?: CallOverrides): Promise<string>;
 
@@ -209,6 +225,8 @@ export interface BabyAccount extends BaseContract {
 
     getBalance(overrides?: CallOverrides): Promise<BigNumber>;
 
+    getMyContribution(overrides?: CallOverrides): Promise<BigNumber>;
+
     owner(overrides?: CallOverrides): Promise<BigNumber>;
 
     renounceOwnership(
@@ -232,6 +250,8 @@ export interface BabyAccount extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     getBalance(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    getMyContribution(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
