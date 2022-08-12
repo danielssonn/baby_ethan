@@ -28,7 +28,6 @@ contract BabyAccount is Ownable, ReentrancyGuard {
     * Custodian can check account balance
     */
     function getBalance() public view onlyOwner returns (uint256) {
-        console.log(address(this).balance);
         return address(this).balance;
     }
 

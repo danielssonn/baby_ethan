@@ -13,18 +13,26 @@ describe('Baby Account', function () {
         await babyAccount.deployed()
     })
 
-    it('Should deposit into account', async () => {
+    it('Owner Should deposit into account', async () => {
     
         await babyAccount!.deposit({value: ethers.utils.parseEther("2.0")});
         expect(await babyAccount!.getBalance()).to.be.equal(ethers.utils.parseEther("2.0"))
     })
-    it('Should withdraw', async () => {
+    it('Owner Should withdraw', async () => {
     
         await babyAccount!.withdraw(ethers.utils.parseEther("1.0"));
         expect(await babyAccount!.getBalance()).to.be.equal(ethers.utils.parseEther("1.0"))
     })
-    it('Should not withdraw', async () => {
+
+    it('Others should deposit into account', async () => {
         const [, addr1] = await ethers.getSigners();
+
+        await babyAccount!.connect(addr1).deposit({value: ethers.utils.parseEther("2.0")});
+        expect(await babyAccount!.getBalance()).to.be.equal(ethers.utils.parseEther("3.0"))
+    })
+    it('Others should not not withdraw', async () => {
+        const [, addr1] = await ethers.getSigners();
+
         await expect(babyAccount!.connect(addr1).withdraw(ethers.utils.parseEther("1.0"))).to.be.reverted;
     })
 
