@@ -1,10 +1,11 @@
 import { HardhatUserConfig } from 'hardhat/config'
+import '@typechain/hardhat'
+import '@nomiclabs/hardhat-ethers'
+import '@nomiclabs/hardhat-waffle'
 import '@nomiclabs/hardhat-waffle'
 import '@nomiclabs/hardhat-etherscan'
-import '@typechain/hardhat'
 import 'hardhat-deploy'
 import 'hardhat-abi-exporter'
-import './tasks'
 import * as dotenv from 'dotenv'
 dotenv.config({ path: '../.env' })
 
@@ -22,14 +23,14 @@ const config: HardhatUserConfig = {
     compilers: [{ version: '0.8.9' }, { version: '0.6.6' }],
   },
   networks: {
-    // goerli: {
-    //   url: ALCHEMY_GOERLI,
-    //   accounts: [`0x${PRIVATE_KEY}`],
-    // },
+    goerli: {
+      url: ALCHEMY_GOERLI,
+      accounts: [`0x${PRIVATE_KEY}`],
+    },
     hardhat: {
-      // forking: {
-      //   url: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_API_KEY_MAINNET}`,
-      // },
+      forking: {
+        url: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_API_KEY_MAINNET}`,
+      },
       accounts: {
         accountsBalance: '10000000000000000000000000',
       },
@@ -53,8 +54,7 @@ const config: HardhatUserConfig = {
     clear: true,
     flat: true,
     spacing: 2,
-    format: 'json',
-    only: ['NFT*'],
+    format: 'json'
   },
 }
 
