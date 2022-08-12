@@ -4,6 +4,7 @@ import '@nomiclabs/hardhat-ethers'
 import '@nomiclabs/hardhat-waffle'
 import '@nomiclabs/hardhat-waffle'
 import '@nomiclabs/hardhat-etherscan'
+import "@nomiclabs/hardhat-web3";
 import 'hardhat-deploy'
 import 'hardhat-abi-exporter'
 import * as dotenv from 'dotenv'
