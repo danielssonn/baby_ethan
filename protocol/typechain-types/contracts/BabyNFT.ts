@@ -298,7 +298,7 @@ export interface BabyNFT extends BaseContract {
     ): Promise<[boolean]>;
 
     mint(
-      _tokenURI: PromiseOrValue<string>,
+      uRI: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -384,7 +384,7 @@ export interface BabyNFT extends BaseContract {
   ): Promise<boolean>;
 
   mint(
-    _tokenURI: PromiseOrValue<string>,
+    uRI: PromiseOrValue<string>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -469,10 +469,7 @@ export interface BabyNFT extends BaseContract {
       overrides?: CallOverrides
     ): Promise<boolean>;
 
-    mint(
-      _tokenURI: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    mint(uRI: PromiseOrValue<string>, overrides?: CallOverrides): Promise<void>;
 
     name(overrides?: CallOverrides): Promise<string>;
 
@@ -599,7 +596,7 @@ export interface BabyNFT extends BaseContract {
     ): Promise<BigNumber>;
 
     mint(
-      _tokenURI: PromiseOrValue<string>,
+      uRI: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -686,7 +683,7 @@ export interface BabyNFT extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     mint(
-      _tokenURI: PromiseOrValue<string>,
+      uRI: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
