@@ -24,7 +24,6 @@ jobs:
       with:
         node-version: 16
         sarif: results.sarif
-        with:
         target: 'protocol/'
 
     - name: Upload SARIF file
