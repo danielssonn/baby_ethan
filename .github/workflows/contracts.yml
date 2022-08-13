@@ -1,4 +1,4 @@
-name: Slither
+name: Contracts
 
 on:
   push:
