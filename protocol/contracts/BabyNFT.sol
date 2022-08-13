@@ -7,9 +7,11 @@ import '@openzeppelin/contracts/utils/Counters.sol';
 import '@openzeppelin/contracts/utils/Base64.sol';
 import '@openzeppelin/contracts/utils/Strings.sol';
 import '@openzeppelin/contracts/access/Ownable.sol';
+import '@openzeppelin/contracts/security/ReentrancyGuard.sol';
 
 
-contract BabyNFT is ERC721, ERC721URIStorage, Ownable {
+
+contract BabyNFT is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard {
     using Strings for uint256;
     using Counters for Counters.Counter;
     Counters.Counter private _totalMinted;
@@ -19,7 +21,7 @@ contract BabyNFT is ERC721, ERC721URIStorage, Ownable {
     constructor() ERC721('Baby Ethan', 'EFT') {
     }
 
-    function mint(string memory uRI) external onlyOwner {
+    function mint(string memory uRI) external onlyOwner nonReentrant {
         uint256 tokenId = _totalMinted.current();
         _safeMint(msg.sender, tokenId);
         _totalMinted.increment();

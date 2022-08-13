@@ -31,5 +31,4 @@ jobs:
       with:
         sarif_file: ${{ steps.slither.outputs.sarif }}
         category: threat-analysis
-        checkout_path: 'protocol/'
         
