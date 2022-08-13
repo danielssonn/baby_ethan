@@ -1,0 +1,11 @@
+name: Slither Analysis
+on: [push]
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./protocol    
+    steps:
+      - uses: actions/checkout@v3
+      - uses: crytic/slither-action@v0.1.1
