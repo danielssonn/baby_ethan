@@ -14,9 +14,11 @@ const {
   ALCHEMY_API_KEY_KOVAN,
   ALCHEMY_API_KEY_RINKEBY,
   PRIVATE_KEY,
-  ETHERSCAN_API_KEY,
+  ETHER_SCAN,
   ALCHEMY_API_KEY_MAINNET,
   ALCHEMY_GOERLI,
+  ALCHEMY_API_MUMBAI,
+  POLYGON_SCAN
 } = process.env
 
 const config: HardhatUserConfig = {
@@ -27,6 +29,11 @@ const config: HardhatUserConfig = {
     goerli: {
       url: ALCHEMY_GOERLI,
       accounts: [`0x${PRIVATE_KEY}`],
+    },
+    polygon_mumbai: {
+      url: ALCHEMY_API_MUMBAI,
+      accounts: [`0x${PRIVATE_KEY}`],
+      gasPrice: 35000000000
     },
     hardhat: {
       forking: {
@@ -40,6 +47,7 @@ const config: HardhatUserConfig = {
       chainId: 31337,
     },
   },
+  
   namedAccounts: {
     deployer: {
       default: 0,
@@ -47,7 +55,10 @@ const config: HardhatUserConfig = {
     },
   },
   etherscan: {
-    apiKey: ETHERSCAN_API_KEY,
+    apiKey: {
+      polygonMumbai: "8NDFF311UEQNMP9VT1WPS9467ZUXEKXSQ3",
+
+  }
   },
   abiExporter: {
     path: './data/abi',

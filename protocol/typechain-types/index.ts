@@ -18,8 +18,6 @@ export type { IERC721 } from "./@openzeppelin/contracts/token/ERC721/IERC721";
 export { IERC721__factory } from "./factories/@openzeppelin/contracts/token/ERC721/IERC721__factory";
 export type { IERC721Receiver } from "./@openzeppelin/contracts/token/ERC721/IERC721Receiver";
 export { IERC721Receiver__factory } from "./factories/@openzeppelin/contracts/token/ERC721/IERC721Receiver__factory";
-export type { ERC721Holder } from "./@openzeppelin/contracts/token/ERC721/utils/ERC721Holder";
-export { ERC721Holder__factory } from "./factories/@openzeppelin/contracts/token/ERC721/utils/ERC721Holder__factory";
 export type { ERC165 } from "./@openzeppelin/contracts/utils/introspection/ERC165";
 export { ERC165__factory } from "./factories/@openzeppelin/contracts/utils/introspection/ERC165__factory";
 export type { IERC165 } from "./@openzeppelin/contracts/utils/introspection/IERC165";
