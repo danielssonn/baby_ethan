@@ -19,7 +19,7 @@ contract BabyNFT is ERC721, ERC721URIStorage, Ownable {
     constructor() ERC721('Baby Ethan', 'EFT') {
     }
 
-    function mint(string memory uRI) public onlyOwner {
+    function mint(string memory uRI) external onlyOwner {
         uint256 tokenId = _totalMinted.current();
         _safeMint(msg.sender, tokenId);
         _totalMinted.increment();
@@ -34,10 +34,6 @@ contract BabyNFT is ERC721, ERC721URIStorage, Ownable {
         returns (string memory)
     {
         return super.tokenURI(tokenId);
-    }
-
-    function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage) {
-        super._burn(tokenId);
     }
     
 }
