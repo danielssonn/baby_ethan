@@ -1,4 +1,5 @@
 name: Slither Analysis
+working-directory: ./protocol
 on: [push]
 jobs:
   analyze:
