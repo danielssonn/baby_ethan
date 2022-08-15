@@ -40,7 +40,7 @@ const config: HardhatUserConfig = {
         url: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_API_KEY_MAINNET}`,
       },
       accounts: {
-        accountsBalance: '10000000000000000000000000',
+              accountsBalance: '10000000000000000000000000',
       },
     },
     localhost: {
@@ -61,12 +61,11 @@ const config: HardhatUserConfig = {
   }
   },
   abiExporter: {
-    path: './data/abi',
+    path: '../client/src/abis/',
     runOnCompile: true,
-    clear: true,
-    flat: true,
     spacing: 2,
-    format: 'json'
+    format: 'json',
+    clear: true
   },
 }
 

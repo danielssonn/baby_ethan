@@ -1,2 +1,2 @@
-
-export { default as NavBar } from './NavBar'
+export { default as LandingFooter } from './LandingFooter'
+export {default as PayForm } from './PayForm'

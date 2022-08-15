@@ -8,8 +8,7 @@ import "hardhat/console.sol";
 contract BabyAccount is Ownable, ReentrancyGuard { 
 
 
-    // some mapping to manage who sent us monies ....
-
+    // some mapping to manage who sent us monies ..
     mapping (address =>  uint256) babyFriends;
 
     /**
@@ -29,7 +28,7 @@ contract BabyAccount is Ownable, ReentrancyGuard {
     /**
     * Custodian can check account balance
     */
-    function getBalance() external view onlyOwner returns (uint256) {
+    function getBalance() external view  returns (uint256) {
         return address(this).balance;
     }
 

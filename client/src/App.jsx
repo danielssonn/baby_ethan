@@ -1,18 +1,22 @@
 import { useEffect } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+
 import { Landing } from './pages'
 
 const App = () => {
-  useEffect(() => {
-    window.process = {
-      ...window.process
-    }
-  }, [])
+    useEffect(() => {
+        window.process = {
+            ...window.process,
+        }
+    }, [])
 
-  return (
-    <div className="min-h-screen">
-      <Landing />
-    </div>
-  )
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Landing />} />
+            </Routes>
+        </BrowserRouter>
+    )
 }
 
 export default App

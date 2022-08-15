@@ -1,66 +1,64 @@
-import React, { useState, useContext } from "react";
-import { TransactionContext } from "../context/TransactionContext";
+import { Link, useNavigate } from 'react-router-dom'
+import { Fragment, useEffect } from 'react'
+import { Popover, Transition } from '@headlessui/react'
+import { MenuIcon, XIcon } from '@heroicons/react/outline'
 
-import { useNavigate } from "react-router-dom";
-import ConfettiExplosion from "react-confetti-explosion";
+import useWeb3 from '../hooks/use-web3'
+import useContract from '../hooks/use-contract'
+import IMAGES from '../../images'
+import { LandingFooter } from '../components'
 
-// icons
-import { CgSpinner } from "react-icons/cg";
+export default function Landing() {
+    const { currentAccount, connectWallet } = useWeb3()
+    const { diaperFundBalance, addToDiaperFund } = useContract()
 
-// assets
-import IMAGES from "../../images";
+    return (
+        <>
+            <div className="relative bg-gray-50 overflow-hidden">
+                <div className="relative pt-6 pb-16 sm:pb-24">
+                    <Popover>
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                            <nav
+                                className="relative flex items-center justify-between sm:h-10 md:justify-center"
+                                aria-label="Global"
+                            >
+                                <div className="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
+                                    <div className="flex items-center justify-between w-full md:w-auto">
+                               
+                                        <div className="-mr-2 flex items-center md:hidden">
+                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
+                                    <span className="inline-flex rounded-md shadow">
+                                        <button
+                                            onClick={connectWallet}
+                                            className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-green-600 bg-white hover:bg-gray-50"
+                                        >
+                                            Connect wallet
+                                        </button>
+                                    </span>
+                                </div>
+                            </nav>
+                        </div>
+  
+                    </Popover>
+                </div>
+            </div>
+            <div> Diaper Fund: {diaperFundBalance} eth</div>
+            <div>        
+            <input type="number" id="diapers" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500   p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="">
+                </input>
+                <button
+                    onClick={addToDiaperFund}
+                    className="px-5 py-3 text-center font-medium text-green-600 bg-gray-50 hover:bg-gray-100"
+                >
+                    Add
+                </button>
+            </div>
 
-const Landing = () => {
-  const nameInput = React.createRef();
-
-  // firework config
-  const bigExplodeProps = {
-    force: 0.6,
-    duration: 5000,
-    particleCount: 300,
-    floorHeight: 1600,
-    floorWidth: 1600,
-  };
-
-  const navigate = useNavigate();
-
-  const { connectWallet, setUserIdentity } = useContext(TransactionContext);
-
-  // cnnect wallet
-  const connect = async () => {
-    const connect = await connectWallet();
-  };
-
-  return (
-    <div className="bg-dashboard bg-contain bg-repeat-x w-full h-100v flex flex-col justify-center items-center">
-      <h1 className="font-semibold text-2xl text-stone-500 uppercase">Welcome</h1>
-
-      {/* Dapp name */}
-      <div className="rounded-lg p-4 text-transparent xl:text-6xl text-4xl font-extrabold bg-clip-text bg-gradient-to-br from-[#3926AD] to-[#C367D6]">
-        <h1>Dave!</h1>
-      </div>
-
-      {/* step cards */}
-      <div className="flex justify-center items-stretch w-full">
-        {/* connect wallet */}
-        {
-          <div className="animate-fade m-5 flex flex-col justify-center items-center xl:w-1/6 w-1/4 border-4 border-[#5841f0]/60 shadow-[#5841f0] drop-shadow-lg rounded-xl  bg-white/60 p-8 cursor-pointer">
-            <h1 className="font-semibold text-stone-500"> Connect Your Wallet</h1>
-            <img src={IMAGES.wallet} alt="logo" className="" />
-
-            <button
-              className="py-2 px-6 font-semibold text-white border bg-[#5841f0] rounded-lg flex items-center"
-              onClick={connect}
-            >
-              Connect
-            </button>
-          </div>
-        }
-
-        {/* enter user name */}
-      </div>
-    </div>
-  );
-};
-
-export default Landing;
+            <LandingFooter />
+        </>
+    )
+}
