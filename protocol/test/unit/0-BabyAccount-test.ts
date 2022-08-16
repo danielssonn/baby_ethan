@@ -51,6 +51,12 @@ describe('Baby Account', function () {
 
         expect(await babyAccount!.connect(addr1).getMyContribution()).to.be.equal(ethers.utils.parseEther("2.0"))
     })
+    it('Deposit should emit event', async () => {
+        const [, addr1] = await ethers.getSigners();
+       
+
+        await expect(babyAccount!.connect(addr1).deposit({value: ethers.utils.parseEther("1.0")})).to.emit(babyAccount, "ContributionMade");
+    })
 
    
 })

@@ -11,7 +11,7 @@ const TransactionProvider = ({ children }) => {
     // states
     const [currentSigner, setCurrentSigner] = useState('')
     const [currentAccount, setCurrentAccount] = useState('')
-    const [currentChain, setCurrentChain] = useState(2500)
+    const [currentChain, setCurrentChain] = useState(4)
     const [ready, setReady] = useState(false)
     const [web3Provider] = useState(new ethers.providers.Web3Provider(ethereum))
     const [isDev, setIsDev] = useState(false)
@@ -93,7 +93,7 @@ const TransactionProvider = ({ children }) => {
             setProvider(
                 ethers.providers.AlchemyProvider.getWebSocketProvider(
                     currentChain,
-                    ALCHEMY_ID
+                    CHAIN_MAP.get(currentChain).api
                 )
             )
             /* eslint-enable no-undef */

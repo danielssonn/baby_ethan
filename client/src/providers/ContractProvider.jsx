@@ -8,13 +8,19 @@ import { CHAIN_MAP } from '../utils/constants'
 import { diaperFundABI } from '../utils/constants'
 
 function getContractFor(chainId, signer) {
-    console.log('for ', chainId)
+   
     const chainConfig = CHAIN_MAP.get(chainId)
-    return new ethers.Contract(
+    
+
+    const contract  = new ethers.Contract(
         chainConfig.diaperFund,
         diaperFundABI,
         signer || new ethers.providers.JsonRpcProvider(chainConfig.rpc)
     )
+
+    
+
+    return contract;
 }
 
 const reducer = (state, action) => {
@@ -29,14 +35,23 @@ const ContractProvider = ({ children }) => {
     // eslint-disable-next-line
     const fetchDiaperFund = async (chainId) => {
         const chainConfig = CHAIN_MAP.get(chainId)
-        console.log('fetch for', chainId)
+        console.log('fetch diaper fund for', chainId)
 
         // Use the contract for the specified chain
-        const contract = getContractFor(chainId, currentSigner)
+        const contract = getContractFor(chainId )
+
+        contract.on("ContributionMade", (from, amount, event) => {
+            console.log('deposited! ',amount)
+            setDiaperFundBalance(ethers.utils.formatEther(amount))
+
+            
+        }) 
+
         try {
             console.log(chainId)
             const chainName = chainConfig.name
             const diaperFundBalance = await contract.getBalance()
+           
             setDiaperFundBalance(ethers.utils.formatEther(diaperFundBalance))
         } catch (e) {
             console.error(
@@ -46,16 +61,16 @@ const ContractProvider = ({ children }) => {
         }
     }
 
+ 
+
     const addToDiaperFund = async (amount) => {
         if (currentSigner) {
             // TODO: use the mainnet / testnet chain ID
-            const contract = getContractFor(2500, currentSigner)
+            const contract = getContractFor(4, currentSigner)
             try {
-                await contract.deposit({ value: ethers.utils.parseEther("1.0") })
+                const  tx = await contract.deposit({ value: ethers.utils.parseEther(amount) })
                 
-                
-                fetchDiaperFund(currentChain)   
-                return receipt;
+                return tx;
             } catch (e) {
                 return e.reason || e.transaction
             }
@@ -66,7 +81,7 @@ const ContractProvider = ({ children }) => {
         if (currentChain && currentSigner) {
             fetchDiaperFund(currentChain)
         }
-    }, [currentChain, currentSigner])
+    }, [currentChain, currentSigner, ])
 
     return (
         <ContractContext.Provider

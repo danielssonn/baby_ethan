@@ -91,11 +91,25 @@ export interface BabyAccountInterface extends utils.Interface {
   decodeFunctionResult(functionFragment: "withdraw", data: BytesLike): Result;
 
   events: {
+    "ContributionMade(address,uint256)": EventFragment;
     "OwnershipTransferred(address,address)": EventFragment;
   };
 
+  getEvent(nameOrSignatureOrTopic: "ContributionMade"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
 }
+
+export interface ContributionMadeEventObject {
+  from: string;
+  amount: BigNumber;
+}
+export type ContributionMadeEvent = TypedEvent<
+  [string, BigNumber],
+  ContributionMadeEventObject
+>;
+
+export type ContributionMadeEventFilter =
+  TypedEventFilter<ContributionMadeEvent>;
 
 export interface OwnershipTransferredEventObject {
   previousOwner: string;
@@ -208,6 +222,12 @@ export interface BabyAccount extends BaseContract {
   };
 
   filters: {
+    "ContributionMade(address,uint256)"(
+      from?: null,
+      amount?: null
+    ): ContributionMadeEventFilter;
+    ContributionMade(from?: null, amount?: null): ContributionMadeEventFilter;
+
     "OwnershipTransferred(address,address)"(
       previousOwner?: PromiseOrValue<string> | null,
       newOwner?: PromiseOrValue<string> | null

@@ -23,6 +23,7 @@ contract BabyAccount is Ownable, ReentrancyGuard {
     */
     function deposit() external payable {
         babyFriends[msg.sender] =   babyFriends[msg.sender] + msg.value;
+        emit ContributionMade(msg.sender, address(this).balance);
     }
 
     /**
@@ -40,5 +41,6 @@ contract BabyAccount is Ownable, ReentrancyGuard {
         return babyFriends[msg.sender];
     }
 
+    event ContributionMade(address from, uint256 amount);
 
 }
