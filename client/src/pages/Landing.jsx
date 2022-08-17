@@ -94,7 +94,7 @@ export default function Landing() {
                 <div>Smart Contract Verified on Etherscan </div>
                 </a>
                 <br></br>
-                Send via eTransfer
+                <a href="#" onClick={() => {alert('You can still help the baby! Send  e-transfer with "diapers" message  to daniel.maly@gmail.com and we will make the crypto conversion and deposit for you!')}}>Shucks, I only have CADs!</a>
             </div>
             <LandingFooter />
         </>
