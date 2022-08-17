@@ -50,7 +50,15 @@ export default function Landing() {
                     {' '}
                     Diaper Fund: {diaperFundBalance} ETH
                 </h1>
-                <br></br>
+                <br></br>  
+
+                <div className="bg-dashboard bg-contain bg-repeat-x w-full h-100v flex flex-col justify-center items-center">
+                Would you like to help the baby? 
+                </div>
+
+                <div className="bg-dashboard bg-contain bg-repeat-x w-full h-100v flex flex-col justify-center items-center">
+                Connect your wallet, deposit right here:
+                </div>
                 <div className="flex">
                     <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
                         ETH
@@ -73,16 +81,17 @@ export default function Landing() {
                     </button>
                 </div>
                 <br></br>
-                Or scan with your wallet:
+                Or send some funds from your wallet:
                 <div>
-                    <img src={qr} alt="QR" />
+                    <img src={qr} alt="QR" width={80} height={80} />
                 </div>
-                0x9B50B6854c2A963f2C0554798De7812069cC97C3 <br></br>
-                <br></br>
+                <div className="font-bold text-stone-600">
+                0x9B50B6854c2A963f2C0554798De7812069cC97C3 </div><br></br>
+                
 
                 <a href="https://rinkeby.etherscan.io/address/0x9B50B6854c2A963f2C0554798De7812069cC97C3">
                 <div className="flex justify-center items-center"><img src={scan} alt="etherscan" width="20" /></div>
-                <div>Verified on Etherscan </div>
+                <div>Smart Contract Verified on Etherscan </div>
                 </a>
                 <br></br>
                 Send via eTransfer

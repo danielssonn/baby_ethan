@@ -10,6 +10,9 @@ export default defineConfig({
             process.env.CONTRACT_ETHEREUM_DEV
         ),
     },
+    server: {
+        host: true
+      },
     plugins: [react()],
 })
 /* eslint-enable no-undef */

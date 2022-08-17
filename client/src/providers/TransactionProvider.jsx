@@ -28,7 +28,7 @@ const TransactionProvider = ({ children }) => {
                 setCurrentAccount(accounts[0])
                 setCurrentSigner(web3Provider.getSigner())
             } else {
-                connectWallet()
+                // connectWallet()
             }
         } catch (error) {
             console.log(error)

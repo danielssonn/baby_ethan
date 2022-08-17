@@ -5,6 +5,7 @@ import { ContractContext } from '../context'
 import useWeb3 from '../hooks/use-web3'
 import { CHAIN_MAP } from '../utils/constants'
 
+
 import { diaperFundABI } from '../utils/constants'
 
 function getContractFor(chainId, signer) {
@@ -64,6 +65,7 @@ const ContractProvider = ({ children }) => {
  
 
     const addToDiaperFund = async (amount) => {
+
         if (currentSigner) {
             // TODO: use the mainnet / testnet chain ID
             const contract = getContractFor(4, currentSigner)
@@ -74,14 +76,17 @@ const ContractProvider = ({ children }) => {
             } catch (e) {
                 return e.reason || e.transaction
             }
+        } else{
+            
+            alert('Connect your wallet, first.')
         }
     }
 
     useEffect(() => {
-        if (currentChain && currentSigner) {
+        if (currentChain) {
             fetchDiaperFund(currentChain)
         }
-    }, [currentChain, currentSigner, ])
+    }, [currentChain, ])
 
     return (
         <ContractContext.Provider
