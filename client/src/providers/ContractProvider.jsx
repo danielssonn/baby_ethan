@@ -5,23 +5,18 @@ import { ContractContext } from '../context'
 import useWeb3 from '../hooks/use-web3'
 import { CHAIN_MAP } from '../utils/constants'
 
-
 import { diaperFundABI } from '../utils/constants'
 
 function getContractFor(chainId, signer) {
-   
     const chainConfig = CHAIN_MAP.get(chainId)
-    
 
-    const contract  = new ethers.Contract(
+    const contract = new ethers.Contract(
         chainConfig.diaperFund,
         diaperFundABI,
         signer || new ethers.providers.JsonRpcProvider(chainConfig.rpc)
     )
 
-    
-
-    return contract;
+    return contract
 }
 
 const reducer = (state, action) => {
@@ -36,23 +31,17 @@ const ContractProvider = ({ children }) => {
     // eslint-disable-next-line
     const fetchDiaperFund = async (chainId) => {
         const chainConfig = CHAIN_MAP.get(chainId)
-        console.log('fetch diaper fund for', chainId)
 
         // Use the contract for the specified chain
-        const contract = getContractFor(chainId )
+        const contract = getContractFor(chainId)
 
-        contract.on("ContributionMade", (from, amount, event) => {
-            console.log('deposited! ',amount)
+        contract.on('ContributionMade', (from, amount, event) => {
             setDiaperFundBalance(ethers.utils.formatEther(amount))
-
-            
-        }) 
+        })
 
         try {
-            console.log(chainId)
-            const chainName = chainConfig.name
             const diaperFundBalance = await contract.getBalance()
-           
+
             setDiaperFundBalance(ethers.utils.formatEther(diaperFundBalance))
         } catch (e) {
             console.error(
@@ -62,22 +51,20 @@ const ContractProvider = ({ children }) => {
         }
     }
 
- 
-
     const addToDiaperFund = async (amount) => {
-
         if (currentSigner) {
             // TODO: use the mainnet / testnet chain ID
             const contract = getContractFor(4, currentSigner)
             try {
-                const  tx = await contract.deposit({ value: ethers.utils.parseEther(amount) })
-                
-                return tx;
+                const tx = await contract.deposit({
+                    value: ethers.utils.parseEther(amount),
+                })
+
+                return tx
             } catch (e) {
                 return e.reason || e.transaction
             }
-        } else{
-            
+        } else {
             alert('Connect your wallet, first.')
         }
     }
@@ -86,7 +73,7 @@ const ContractProvider = ({ children }) => {
         if (currentChain) {
             fetchDiaperFund(currentChain)
         }
-    }, [currentChain, ])
+    }, [currentChain])
 
     return (
         <ContractContext.Provider

@@ -40,13 +40,12 @@ const TransactionProvider = ({ children }) => {
     // check if wallet is connect
     const checkIfWalletIsConnected = async () => {
         try {
-            if (!ethereum) return alert('Please install MetaMask in Chrome, or use your mobile wallet.')
+            if (!ethereum) return 
 
             const accounts = await ethereum.request({ method: 'eth_accounts' })
 
             if (accounts.length) {
                 setCurrentAccount(accounts[0])
-                console.log('cw', web3Provider)
                 setCurrentSigner(web3Provider.getSigner())
             } else {
                 // connectWallet()
@@ -59,7 +58,7 @@ const TransactionProvider = ({ children }) => {
     // connect to user's wallet
     const connectWallet = async () => {
         try {
-            if (!ethereum) return alert('Please install MetaMask.')
+            if (!ethereum) return alert('Please install MetaMask in Chrome.')
             const accounts = await ethereum.request({
                 method: 'eth_requestAccounts',
             })
@@ -73,10 +72,9 @@ const TransactionProvider = ({ children }) => {
 
     const detectChain = async () => {
         try {
-            if (!ethereum) return alert('Please install MetaMask.')
+            if (!ethereum) return alert('Please install MetaMask in Chrome.')
 
             const chainId = await ethereum.request({ method: 'eth_chainId' })
-            console.log('', chainId)
             setCurrentChain(Number.parseInt(chainId))
         } catch (error) {
             console.error(error)

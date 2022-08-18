@@ -9,25 +9,22 @@ import '@openzeppelin/contracts/utils/Strings.sol';
 import '@openzeppelin/contracts/access/Ownable.sol';
 import '@openzeppelin/contracts/security/ReentrancyGuard.sol';
 
-
-
 contract BabyNFT is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard {
     using Strings for uint256;
     using Counters for Counters.Counter;
     Counters.Counter private _totalMinted;
 
-
-
-    constructor() ERC721('Baby Ethan', 'EFT') {
-    }
+    constructor() ERC721('Baby Nathan', 'BNFT') {}
 
     function mint(string memory uRI) external onlyOwner nonReentrant {
+        _totalMinted.increment();
         uint256 tokenId = _totalMinted.current();
         _safeMint(msg.sender, tokenId);
-        _totalMinted.increment();
         _setTokenURI(_totalMinted.current(), uRI);
     }
-
+    function burn(uint256 tokenId) external onlyOwner nonReentrant{
+        _burn(tokenId);
+    }
     function tokenURI(uint256 tokenId)
         public
         view
@@ -38,8 +35,10 @@ contract BabyNFT is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard {
         return super.tokenURI(tokenId);
     }
 
-    function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage) {
+    function _burn(uint256 tokenId)
+        internal
+        override(ERC721, ERC721URIStorage)
+    {
         super._burn(tokenId);
     }
-    
 }

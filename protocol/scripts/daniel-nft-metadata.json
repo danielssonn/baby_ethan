@@ -1,0 +1,24 @@
+{
+  "attributes": [
+      {
+        "trait_type": "Baby Color",
+        "value": "Blue"
+      },
+      {
+        "trait_type": "Earring Color",
+        "value": "White"
+      },
+      {
+        "trait_type": "Crown Color",
+        "value": "No Crown"
+      },
+      {
+        "trait_type": "Bowtie Color",
+        "value": "No Bow Tie"
+      }
+    ],
+    "description": "Welcome to this world, baby Nathan! You were just born and it will take a while for you to read this 'message in a bottle'. It will likely feel very old fashioned :). At least it lasted this whole time! Wish you ton of health, lots of love and happiness in your life. Congratulations to Mom and Dad!",
+    "image": "ipfs://QmaAimttendhDgHmoxfCuPoh4oKkUYFer12xg3DvLLSGxk",
+    "name": "Best Wishes from Daniel Maly"
+  }
+  

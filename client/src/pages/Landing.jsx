@@ -2,18 +2,16 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Fragment, useEffect, useState } from 'react'
 import qr from '../../images/qr.png'
 import scan from '../../images/checked.svg'
+import bg from '../../images/9.png'
 
 import useWeb3 from '../hooks/use-web3'
 import useContract from '../hooks/use-contract'
-import IMAGES from '../../images'
 import { LandingFooter } from '../components'
 import {
     Accordion,
     AccordionHeader,
     AccordionBody,
 } from '@material-tailwind/react'
-
-
 
 function Icon({ id, open }) {
     return (
@@ -49,43 +47,51 @@ export default function Landing() {
 
     return (
         <>
-            <div className="bg-dashboard bg-contain bg-repeat-x w-full h-100v flex flex-col justify-center items-center">
+            <div className="bg-dashboard  w-full h-100v flex flex-col justify-center items-center">
                 <br></br>
-                Do you really need crypto fund for a baby?<br></br>
+                Crypto fund for a baby. Why did we make it?<br></br>
                 <div className="bg-dashboard bg-contain bg-repeat-x w-full h-100v flex flex-col justify-center items-center">
                     It beats a gift basket, anyday!
                 </div>
                 <div className="bg-dashboard bg-contain bg-repeat-x w-full h-100v flex flex-col justify-center items-center">
-                It will grow with the baby.
+                    It will grow with the baby.
                 </div>
-                <div className="bg-dashboard bg-contain bg-repeat-x w-full h-100v flex flex-col justify-center items-center">
-                WAGMI
-                </div>
-                <br></br> <br></br>
-                <h1 className="font-semibold text-4xl text-blue-500 uppercase">
-                    Diaper crypto Fund: {diaperFundBalance} ETH
+                <button
+                    className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                    onClick={() => alert('This crypto fund is a smart contract, deployed on Ethereum. Anyone can contribute ETH to it. The fund owner - baby parent can withdraw the funds anytime. \r\n \r\n It is like the old school envelope with cash, only better. Birthdays, graduations - any event is good for contribution. The best thing - the value will grow over time!')}
+                >
+                    How does this work?
+                </button>
+  
+                <br></br>
+                <h1 className="font-semibold text-3xl text-rose-900	 uppercase">
+                    Balance: {diaperFundBalance} ETH
                 </h1>
-                <a href="https://rinkeby.etherscan.io/address/0x9B50B6854c2A963f2C0554798De7812069cC97C3" >
+                <a href="https://rinkeby.etherscan.io/address/0x9B50B6854c2A963f2C0554798De7812069cC97C3">
                     <div className="flex justify-center items-center">
                         <img src={scan} alt="etherscan" width="20" />
                     </div>
-                    <div className="flex justify-center items-center">Verified on Etherscan </div>
+                    <div className="flex justify-center items-center">
+                        Verified on Etherscan{' '}
+                    </div>
                     <div className="font-bold text-stone-600 underline">
                         0x9B50B6854c2A963f2C0554798De7812069cC97C3
                     </div>
                 </a>
                 <div>Fund owner: Baby Daddy Rui</div>
-                <br></br>                <br></br>
-
+ 
+                <br></br> <br></br>
                 <hr></hr>
-
                 <div>
-                <div className='bg-red-500 justify-left items-left text-white min-w-full'>
-                How can I contribute?
-                </div>
+                    <div className="bg-red-500 justify-left items-left text-white min-w-full">
+                        How can I contribute?
+                    </div>
                     <Fragment>
-                        <Accordion open={open === 1} className="bg-orange-200 min-w-full">
-                            <AccordionHeader onClick={() => handleOpen(1)}  >
+                        <Accordion
+                            open={open === 1}
+                            className="bg-orange-200 min-w-full"
+                        >
+                            <AccordionHeader onClick={() => handleOpen(1)}>
                                 A. Ahh, Shucks. I only have CADs
                             </AccordionHeader>
                             <AccordionBody>
@@ -100,7 +106,7 @@ export default function Landing() {
                                     </li>
                                     <li>2. We'll exchange it for crypto</li>
                                     <li>
-                                        3. We'll send it to the Diaper fund, for
+                                        3. We'll send it to the Diaper Fund, for
                                         you
                                     </li>
                                     <li>4. And send you a receipt</li>
@@ -108,7 +114,7 @@ export default function Landing() {
                             </AccordionBody>
                         </Accordion>
                         <Accordion open={open === 2} className="bg-orange-300">
-                            <AccordionHeader onClick={() => handleOpen(2)}  >
+                            <AccordionHeader onClick={() => handleOpen(2)}>
                                 B. I have my mobile crypto wallet
                             </AccordionHeader>
                             <AccordionBody>
@@ -147,59 +153,56 @@ export default function Landing() {
                             </AccordionBody>
                         </Accordion>
                         <Accordion open={open === 3}>
-                            <AccordionHeader onClick={() => handleOpen(3)}  className="bg-orange-400">
+                            <AccordionHeader
+                                onClick={() => handleOpen(3)}
+                                className="bg-orange-400"
+                            >
                                 C. I'm a crypto cowboy!
                             </AccordionHeader>
                             <AccordionBody className="bg-orange-400">
                                 <ol>
-                                        <li>
-                                            1. This is my personal computer
-                                        </li>
-                                        <li>
-                                            2. I am using Chrome browser
-                                        </li>
-                                        <li>
-                                            3. My Metamask extension is ready to go!
-                                        </li>
-               
-                                    </ol>
-                                    <br></br>
-                                    <div className="hdden items-center justify-start inset-y-0 md:left-0">
-                                        <span className="inline-flex rounded-md shadow ">
-                                            <button
-                                                onClick={connectWallet}
-                                                className="inline-flex bg-orange-600 items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-white hover:text-black"
-                                            >
-                                                Connect!
-                                            </button>
-                                        </span>
-                                        <br></br>
-                                    </div>
-                                    <div className="flex">
-                                        <span className="inline-flex bg-orange-600 items-center px-3 text-sm text-white  rounded-l-md border border-r-0  dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
-                                            ETH
-                                        </span>
-                                        <input
-                                            type="number"
-                                            min="0"
-                                            step="0.01"
-                                            id="diapers"
-                                            className=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500   p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            onChange={(event) =>
-                                                setNumberOfDiapers(
-                                                    event.target.value
-                                                )
-                                            }
-                                        ></input>
+                                    <li>1. This is my personal computer</li>
+                                    <li>2. I am using Chrome browser</li>
+                                    <li>
+                                        3. My Metamask extension is ready to go!
+                                    </li>
+                                </ol>
+                                <br></br>
+                                <div className="hdden items-center justify-start inset-y-0 md:left-0">
+                                    <span className="inline-flex rounded-md shadow ">
                                         <button
-                                            onClick={() =>
-                                                addToDiaperFund(numberOfDiapers)
-                                            }
-                                            className="px-5 py-3 bg-orange-600  text-center font-medium text-white hover:text-black"
+                                            onClick={connectWallet}
+                                            className="inline-flex bg-orange-600 items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-white hover:text-black"
                                         >
-                                            Deposit
+                                            Connect!
                                         </button>
-                                    
+                                    </span>
+                                    <br></br>
+                                </div>
+                                <div className="flex">
+                                    <span className="inline-flex bg-orange-600 items-center px-3 text-sm text-white  rounded-l-md border border-r-0  dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                                        ETH
+                                    </span>
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        step="0.01"
+                                        id="diapers"
+                                        className=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500   p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        onChange={(event) =>
+                                            setNumberOfDiapers(
+                                                event.target.value
+                                            )
+                                        }
+                                    ></input>
+                                    <button
+                                        onClick={() =>
+                                            addToDiaperFund(numberOfDiapers)
+                                        }
+                                        className="px-5 py-3 bg-orange-600  text-center font-medium text-white hover:text-black"
+                                    >
+                                        Deposit
+                                    </button>
                                 </div>
                             </AccordionBody>
                         </Accordion>

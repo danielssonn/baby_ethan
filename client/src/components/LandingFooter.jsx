@@ -21,13 +21,18 @@ const navigation = {
 export default function LandingFooter() {
     return (
         <footer className="bg-white">
-            <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
-                <div className="bg-dashboard bg-contain bg-repeat-x w-full h-100v flex flex-col justify-center items-center">
-                   <a href="https://testnets.opensea.io/collection/cryptokittiesrinkeby" className='underline'>Our Hallmark Card</a> 
+            <div className="max-w-7xl bg-contain bg-[url('/images/2.png')] h-64 bg-no-repeat bg-center mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+
+
+
+
+
                 </div>
-                <div className="mt-8 flex justify-center space-x-6">
-                    Thank you!<br></br>
+                <div>
+                <div className="bg-dashboard bg-contain bg-repeat-x w-full  flex justify-center items-center">
+                   <a href="https://testnets.opensea.io/collection/cryptokittiesrinkeby" className='underline'>Our Hallmark Card ... sike! It's NFT!</a> 
                 </div>
+
                 <div className="mt-8 flex justify-center space-x-6">
                     <FaHeart color="red" /> <FaHeart color="red" />{' '}
                     <FaHeart color="red" />
