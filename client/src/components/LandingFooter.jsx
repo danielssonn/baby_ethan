@@ -1,4 +1,4 @@
-import { FaHeart } from 'react-icons/fa';
+import { FaHeart } from 'react-icons/fa'
 
 const navigation = {
     social: [
@@ -22,15 +22,17 @@ export default function LandingFooter() {
     return (
         <footer className="bg-white">
             <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
-                <div className="mt-8 flex justify-center space-x-6">
-                       Thank you!<br></br>
-              
+                <div className="bg-dashboard bg-contain bg-repeat-x w-full h-100v flex flex-col justify-center items-center">
+                   <a href="https://testnets.opensea.io/collection/cryptokittiesrinkeby" className='underline'>Our Hallmark Card</a> 
                 </div>
                 <div className="mt-8 flex justify-center space-x-6">
-                <FaHeart color="red" /> <FaHeart color="red" /> <FaHeart color="red" />
-              
+                    Thank you!<br></br>
                 </div>
-           
+                <div className="mt-8 flex justify-center space-x-6">
+                    <FaHeart color="red" /> <FaHeart color="red" />{' '}
+                    <FaHeart color="red" />
+                </div>
+
                 <div className="mt-8 flex justify-center space-x-6">
                     {navigation.social.map((item) => (
                         <a

@@ -13,6 +13,8 @@ import {
     AccordionBody,
 } from '@material-tailwind/react'
 
+
+
 function Icon({ id, open }) {
     return (
         <svg
@@ -49,31 +51,41 @@ export default function Landing() {
         <>
             <div className="bg-dashboard bg-contain bg-repeat-x w-full h-100v flex flex-col justify-center items-center">
                 <br></br>
-                Do you really need crypto for baby diapers?<br></br>
+                Do you really need crypto fund for a baby?<br></br>
                 <div className="bg-dashboard bg-contain bg-repeat-x w-full h-100v flex flex-col justify-center items-center">
                     It beats a gift basket, anyday!
                 </div>
+                <div className="bg-dashboard bg-contain bg-repeat-x w-full h-100v flex flex-col justify-center items-center">
+                It will grow with the baby.
+                </div>
+                <div className="bg-dashboard bg-contain bg-repeat-x w-full h-100v flex flex-col justify-center items-center">
+                WAGMI
+                </div>
                 <br></br> <br></br>
                 <h1 className="font-semibold text-4xl text-blue-500 uppercase">
-                    Diaper Fund: {diaperFundBalance} ETH
+                    Diaper crypto Fund: {diaperFundBalance} ETH
                 </h1>
-                <a href="https://rinkeby.etherscan.io/address/0x9B50B6854c2A963f2C0554798De7812069cC97C3">
+                <a href="https://rinkeby.etherscan.io/address/0x9B50B6854c2A963f2C0554798De7812069cC97C3" >
                     <div className="flex justify-center items-center">
                         <img src={scan} alt="etherscan" width="20" />
                     </div>
                     <div className="flex justify-center items-center">Verified on Etherscan </div>
-                    <div className="font-bold text-stone-600">
+                    <div className="font-bold text-stone-600 underline">
                         0x9B50B6854c2A963f2C0554798De7812069cC97C3
                     </div>
                 </a>
                 <div>Fund owner: Baby Daddy Rui</div>
-                <br></br>
+                <br></br>                <br></br>
+
                 <hr></hr>
-                Three ways to contribute:
+
                 <div>
+                <div className='bg-red-500 justify-left items-left text-white min-w-full'>
+                How can I contribute?
+                </div>
                     <Fragment>
-                        <Accordion open={open === 1}>
-                            <AccordionHeader onClick={() => handleOpen(1)}>
+                        <Accordion open={open === 1} className="bg-orange-200 min-w-full">
+                            <AccordionHeader onClick={() => handleOpen(1)}  >
                                 A. Ahh, Shucks. I only have CADs
                             </AccordionHeader>
                             <AccordionBody>
@@ -86,7 +98,7 @@ export default function Landing() {
                                         2. Put 'diaper fund' in the transfer
                                         message
                                     </li>
-                                    <li>2. We'll exchange it for ether</li>
+                                    <li>2. We'll exchange it for crypto</li>
                                     <li>
                                         3. We'll send it to the Diaper fund, for
                                         you
@@ -95,16 +107,16 @@ export default function Landing() {
                                 </ol>
                             </AccordionBody>
                         </Accordion>
-                        <Accordion open={open === 2}>
-                            <AccordionHeader onClick={() => handleOpen(2)}>
-                                B. I have my mobile wallet ready
+                        <Accordion open={open === 2} className="bg-orange-300">
+                            <AccordionHeader onClick={() => handleOpen(2)}  >
+                                B. I have my mobile crypto wallet
                             </AccordionHeader>
                             <AccordionBody>
                                 <div className="bg-dashboard bg-contain bg-repeat-x w-full h-100v flex flex-col justify-center items-center">
                                     <ol>
                                         <li>
                                             1. Launch your mobile wallet, such
-                                            as Metamask
+                                            as Metamask &nbsp;
                                         </li>
                                         <li>
                                             2. Select 'Send' and scan the code
@@ -135,18 +147,28 @@ export default function Landing() {
                             </AccordionBody>
                         </Accordion>
                         <Accordion open={open === 3}>
-                            <AccordionHeader onClick={() => handleOpen(3)}>
-                                C. I'm a crypto wizzard!
+                            <AccordionHeader onClick={() => handleOpen(3)}  className="bg-orange-400">
+                                C. I'm a crypto cowboy!
                             </AccordionHeader>
-                            <AccordionBody>
-                                <div className="bg-dashboard bg-contain bg-repeat-x w-full h-100v flex flex-col justify-center items-center">
-                                    Metamask in my Chrome is ready to go!
+                            <AccordionBody className="bg-orange-400">
+                                <ol>
+                                        <li>
+                                            1. This is my personal computer
+                                        </li>
+                                        <li>
+                                            2. I am using Chrome browser
+                                        </li>
+                                        <li>
+                                            3. My Metamask extension is ready to go!
+                                        </li>
+               
+                                    </ol>
                                     <br></br>
                                     <div className="hdden items-center justify-start inset-y-0 md:left-0">
-                                        <span className="inline-flex rounded-md shadow">
+                                        <span className="inline-flex rounded-md shadow ">
                                             <button
                                                 onClick={connectWallet}
-                                                className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-stone-600 bg-white hover:bg-gray-50"
+                                                className="inline-flex bg-orange-600 items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-white hover:text-black"
                                             >
                                                 Connect!
                                             </button>
@@ -154,7 +176,7 @@ export default function Landing() {
                                         <br></br>
                                     </div>
                                     <div className="flex">
-                                        <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                                        <span className="inline-flex bg-orange-600 items-center px-3 text-sm text-white  rounded-l-md border border-r-0  dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
                                             ETH
                                         </span>
                                         <input
@@ -162,7 +184,7 @@ export default function Landing() {
                                             min="0"
                                             step="0.01"
                                             id="diapers"
-                                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500   p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            className=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500   p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             onChange={(event) =>
                                                 setNumberOfDiapers(
                                                     event.target.value
@@ -173,17 +195,18 @@ export default function Landing() {
                                             onClick={() =>
                                                 addToDiaperFund(numberOfDiapers)
                                             }
-                                            className="px-5 py-3 text-center font-medium text-stone-600 bg-gray-50 hover:bg-gray-100"
+                                            className="px-5 py-3 bg-orange-600  text-center font-medium text-white hover:text-black"
                                         >
                                             Deposit
                                         </button>
-                                    </div>
+                                    
                                 </div>
                             </AccordionBody>
                         </Accordion>
                     </Fragment>
                 </div>
             </div>
+
             <LandingFooter />
         </>
     )
