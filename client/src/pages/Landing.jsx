@@ -54,7 +54,7 @@ export default function Landing() {
                     It beats a gift basket, anyday!
                 </div>
                 <div className="bg-dashboard bg-contain bg-repeat-x w-full h-100v flex flex-col justify-center items-center">
-                    It will grow with the baby
+                    It will grow with the baby.
                 </div>
                 <button
                     className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
