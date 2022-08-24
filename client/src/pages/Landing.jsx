@@ -58,7 +58,7 @@ export default function Landing() {
                 </div>
                 <button
                     className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-                    onClick={() => alert('This crypto fund is a smart contract, deployed on Ethereum. Anyone can contribute ETH to it. The fund owner - baby parent can withdraw the funds anytime. \r\n \r\n It is like the old school envelope with cash, only better. Birthdays, graduations - any event is good for contribution. The best thing - the value will grow over time!')}
+                    onClick={() => alert('This crypto fund is a smart contract, deployed on Ethereum. Anyone can contribute Ether to it. The fund owner - baby parent can withdraw the funds anytime. \r\n \r\n It is like the old school envelope with cash, only better. Birthdays, graduations - any event is good for contribution. The best thing - the value will grow with the baby!')}
                 >
                     How does this work?
                 </button>
@@ -67,7 +67,7 @@ export default function Landing() {
                 <h1 className="font-semibold text-3xl text-rose-900	 uppercase">
                     Balance: {diaperFundBalance} ETH
                 </h1>
-                <a href="https://rinkeby.etherscan.io/address/0x9B50B6854c2A963f2C0554798De7812069cC97C3">
+                <a href="https://etherscan.io/address/0x1EC7Ff7c85C8131D1992a593Ba05EbF1e8004905#readContract">
                     <div className="flex justify-center items-center">
                         <img src={scan} alt="etherscan" width="20" />
                     </div>
@@ -75,7 +75,7 @@ export default function Landing() {
                         Verified on Etherscan{' '}
                     </div>
                     <div className="font-bold text-stone-600 underline">
-                        0x9B50B6854c2A963f2C0554798De7812069cC97C3
+                    0x1EC7Ff7c85C8131D1992a593Ba05EbF1e8004905
                     </div>
                 </a>
                 <div>Fund owner: Baby Daddy Rui</div>
@@ -101,7 +101,7 @@ export default function Landing() {
                                         daniel.maly@gmail.com
                                     </li>
                                     <li>
-                                        2. Put 'diaper fund' in the transfer
+                                        2. Put 'diaper fund - your name' in the
                                         message
                                     </li>
                                     <li>2. We'll exchange it for crypto</li>
@@ -125,15 +125,18 @@ export default function Landing() {
                                             as Metamask &nbsp;
                                         </li>
                                         <li>
-                                            2. Select 'Send' and scan the code
+                                            2. Switch to Ethereum Main Network
+                                        </li>
+                                        <li>
+                                            3. Select 'Send' and scan the code
                                             below
                                         </li>
                                         <li>
-                                            3. Select the amount - just a little
+                                            4. Select the amount of Eth - just a little
                                             bit!
                                         </li>
                                         <li>
-                                            4. See the Diaper Fund balance
+                                            5. See the Diaper Fund balance
                                             update
                                         </li>
                                     </ol>
@@ -147,7 +150,7 @@ export default function Landing() {
                                         />
                                     </div>
                                     <div className="font-bold text-stone-600">
-                                        0x9B50B6854c2A963f2C0554798De7812069cC97C3{' '}
+                                    0x1EC7Ff7c85C8131D1992a593Ba05EbF1e8004905
                                     </div>
                                 </div>
                             </AccordionBody>

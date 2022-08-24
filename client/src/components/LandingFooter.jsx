@@ -30,7 +30,7 @@ export default function LandingFooter() {
                 </div>
                 <div>
                 <div className="bg-dashboard bg-contain bg-repeat-x w-full  flex justify-center items-center">
-                   <a href="https://testnets.opensea.io/collection/cryptokittiesrinkeby" className='underline'>Our Hallmark Card ... sike! It's NFT!</a> 
+                   <a href="https://rarible.com/baby_nathan" className='underline'>Hallmark Card? Nah ... it's NFTs!</a> 
                 </div>
 
                 <div className="mt-8 flex justify-center space-x-6">

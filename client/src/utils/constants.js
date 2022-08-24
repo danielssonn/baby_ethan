@@ -18,7 +18,12 @@ export const CHAIN_MAP = new Map([
 
     }],
     // Add Avalanche
-    [1, { name: 'ethereum' }],
+    [1, {
+        name: 'mainnet',
+        rpc: 'https://eth-mainnet.g.alchemy.com/v2/d5nZavCpsYw6_a_fuvohEZW-n0WftBn_',
+        diaperFund: '0x1EC7Ff7c85C8131D1992a593Ba05EbF1e8004905',
+
+    }],
     // Local
     [2500,
         {

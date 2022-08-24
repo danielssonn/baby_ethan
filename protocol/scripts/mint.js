@@ -1,5 +1,5 @@
 require('dotenv').config({ path: '../.env' })
-const API_URL = process.env.ALCHEMY_API_URL_RINKEBY
+const API_URL = process.env.ALCHEMY_POLYGON
 const PUBLIC_KEY = process.env.PUBLIC_KEY
 const PRIVATE_KEY = process.env.PRIVATE_KEY
 
@@ -12,7 +12,7 @@ const web3 = createAlchemyWeb3(API_URL)
 
 const contract = require("../artifacts/contracts/BabyNFT.sol/BabyNFT.json")
 
-const contractAddress = "0x280AdB127D356165C116Ac6AAa9E8579DC452d05"
+const contractAddress = "0x9b3f6c4353A210054c1421dF44bfcEA258BB008a"
 
 
 const nftContract = new web3.eth.Contract(contract.abi, contractAddress)
@@ -20,13 +20,14 @@ const nftContract = new web3.eth.Contract(contract.abi, contractAddress)
 
 async function mintNFT(tokenURI) {
     const nonce = await web3.eth.getTransactionCount(PUBLIC_KEY, "latest") //get latest nonce
-  
+
+
     //the transaction
     const tx = {
       from: PUBLIC_KEY,
       to: contractAddress,
       nonce: nonce,
-      gas: 500000,
+      gasLimit: 500000,
       data: nftContract.methods.mint(tokenURI).encodeABI(),
     }
   
@@ -59,7 +60,7 @@ async function mintNFT(tokenURI) {
 
 
 // Grant QmZCPPGw68wR2ywmD1dMmGMpmnHCJ7kgthwKbF2qaD5hTH
-mintNFT("ipfs://QmZCPPGw68wR2ywmD1dMmGMpmnHCJ7kgthwKbF2qaD5hTH")
+// mintNFT("ipfs://QmZCPPGw68wR2ywmD1dMmGMpmnHCJ7kgthwKbF2qaD5hTH")
 
 // Eshaan QmSXkeuykcMtjYKstNWokaTCaNQfiBspzX5Yw6DT4K2A3N
 
@@ -75,4 +76,4 @@ mintNFT("ipfs://QmZCPPGw68wR2ywmD1dMmGMpmnHCJ7kgthwKbF2qaD5hTH")
 
 // Daniel QmaoQiS9ZBUgBhtC2N7zztY8aennunxZfwv2LC6RWB99bX
 
-// mintNFT("ipfs://QmaoQiS9ZBUgBhtC2N7zztY8aennunxZfwv2LC6RWB99bX")
+mintNFT("ipfs://Qmbqv1J3o8UDeX2caZxJK9xreqZY3mqGeyzhpYz9sKxM31")

@@ -19,7 +19,9 @@ const {
   ALCHEMY_GOERLI,
   ALCHEMY_API_MUMBAI,
   POLYGON_SCAN,
-  ALCHEMY_API_URL_RINKEBY
+  ALCHEMY_API_URL_RINKEBY,
+  ALCHEMY_URL_MAINNET,
+  ALCHEMY_POLYGON
 
 } = process.env
 
@@ -31,6 +33,15 @@ const config: HardhatUserConfig = {
     goerli: {
       url: ALCHEMY_GOERLI,
       accounts: [`0x${PRIVATE_KEY}`],
+    },
+    ethereum: {
+      url: ALCHEMY_URL_MAINNET,
+      accounts: [`0x${PRIVATE_KEY}`],
+    },
+    polygon: {
+      url: ALCHEMY_POLYGON,
+      accounts: [`0x${PRIVATE_KEY}`],
+      gasPrice: 350000
     },
     rinkeby: {
       url: ALCHEMY_API_URL_RINKEBY,
@@ -64,7 +75,9 @@ const config: HardhatUserConfig = {
   etherscan: {
     apiKey: {
       polygonMumbai: "8NDFF311UEQNMP9VT1WPS9467ZUXEKXSQ3",
-      rinkeby: "37Z77K4R75KINCQ6175Y7RC8S77RHISCGV"
+      polygon: "8NDFF311UEQNMP9VT1WPS9467ZUXEKXSQ3",
+      rinkeby: "37Z77K4R75KINCQ6175Y7RC8S77RHISCGV",
+      mainnet: "37Z77K4R75KINCQ6175Y7RC8S77RHISCGV"
   }
   },
   abiExporter: {

@@ -14,7 +14,7 @@ const TransactionProvider = ({ children }) => {
     // states
     const [currentSigner, setCurrentSigner] = useState('')
     const [currentAccount, setCurrentAccount] = useState('')
-    const [currentChain, setCurrentChain] = useState(4)
+    const [currentChain, setCurrentChain] = useState(1)
     const [ready, setReady] = useState(false)
     const [metamask, isMetamask ] = useState()
 

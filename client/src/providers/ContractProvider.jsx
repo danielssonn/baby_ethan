@@ -54,7 +54,7 @@ const ContractProvider = ({ children }) => {
     const addToDiaperFund = async (amount) => {
         if (currentSigner) {
             // TODO: use the mainnet / testnet chain ID
-            const contract = getContractFor(4, currentSigner)
+            const contract = getContractFor(1, currentSigner)
             try {
                 const tx = await contract.deposit({
                     value: ethers.utils.parseEther(amount),
